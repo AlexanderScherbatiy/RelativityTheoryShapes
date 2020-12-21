@@ -3,10 +3,12 @@ package sample
 import javafx.application.Application
 import javafx.scene.Scene
 import javafx.scene.control.Label
+import javafx.scene.paint.Color
 import javafx.scene.transform.Affine
 import javafx.scene.transform.Transform
 import javafx.stage.Stage
 import relativity.javafx.toJavaFX
+import relativity.math.RelativityVector
 import relativity.shape.RelativityCoordinatesShape
 
 class Main : Application() {
@@ -20,8 +22,10 @@ class Main : Application() {
         primaryStage.width = w
         primaryStage.height = h
 
-        val coordinates = RelativityCoordinatesShape(100.0)
-        val group = coordinates.toJavaFX()
+        val coordinates2 =
+            RelativityCoordinatesShape(100.0, position = RelativityVector(40.0, 30.0), color = Color.BLUE)
+        val coordinates1 = RelativityCoordinatesShape(100.0, color = Color.BLACK, shapes = listOf(coordinates2))
+        val group = coordinates1.toJavaFX()
 
         val transform = Affine(1.0, 0.0, w / 2, 0.0, -1.0, h / 2)
         group.transforms.addAll(transform)
