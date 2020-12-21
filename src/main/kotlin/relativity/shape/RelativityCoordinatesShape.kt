@@ -10,6 +10,7 @@ class RelativityCoordinatesShape(
     val size: Double,
     val position: RelativityVector = ZeroRelativityVector,
     val color: Color = Color.BLACK,
+    val grid: Boolean = false,
     override val shapes: List<RelativityShape> = listOf()
 ) :
     RelativityShape() {
@@ -29,7 +30,33 @@ class RelativityCoordinatesShape(
                 color = color
             );
 
-            return listOf(t, x)
+            var gridLines = mutableListOf<Segment>()
+            if (grid) {
+                val N = 8;
+                val d = 2 * size / N
+                val s = size - d
+                for (i in 1 until N) {
+                    val dd = -size + i * d
+                    gridLines.add(
+                        Segment(
+                            start = RelativityVector(t = -s, x = dd),
+                            end = RelativityVector(t = s, x = dd),
+                            color = color,
+                            dashed = true
+                        )
+                    )
+                    gridLines.add(
+                        Segment(
+                            start = RelativityVector(t = dd, x = -s),
+                            end = RelativityVector(t = dd, x = s),
+                            color = color,
+                            dashed = true
+                        )
+                    )
+                }
+            }
+
+            return listOf(t, x) + gridLines
         }
 
     override val transforms: List<RelativityTransform>

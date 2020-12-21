@@ -29,6 +29,9 @@ fun Segment.toJavaFX(transforms: List<RelativityTransform>): Shape {
     val y2 = e.t
     val line = Line(x1, y1, x2, y2)
     line.stroke = color
+    if (dashed) {
+        line.strokeDashArray.addAll(5.0, 7.0)
+    }
     return line
 }
 
