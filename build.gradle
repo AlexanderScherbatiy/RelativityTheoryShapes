@@ -1,0 +1,18 @@
+plugins {
+    id 'application'
+    id "org.jetbrains.kotlin.jvm" version "1.4.21"
+}
+
+ext.kotlin_version = "1.4.21"
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    testImplementation 'junit:junit:4.13'
+}
