@@ -3,18 +3,30 @@ package sample
 import javafx.application.Application
 import javafx.scene.Scene
 import javafx.scene.control.Label
+import javafx.scene.transform.Affine
+import javafx.scene.transform.Transform
 import javafx.stage.Stage
+import relativity.javafx.toJavaFX
+import relativity.shape.RelativityCoordinatesShape
 
 class Main : Application() {
 
     override fun start(primaryStage: Stage) {
 
         primaryStage.title = "Hello world Application"
-        primaryStage.width = 300.0
-        primaryStage.height = 200.0
+        val w = 800.0;
+        val h = 600.0;
 
-        val helloWorldLabel = Label("Hello world!");
-        val primaryScene = Scene(helloWorldLabel);
+        primaryStage.width = w
+        primaryStage.height = h
+
+        val coordinates = RelativityCoordinatesShape(100.0)
+        val group = coordinates.toJavaFX()
+
+        val transform = Affine(1.0, 0.0, w / 2, 0.0, -1.0, h / 2)
+        group.transforms.addAll(transform)
+
+        val primaryScene = Scene(group);
         primaryStage.scene = primaryScene;
         primaryStage.show();
     }
