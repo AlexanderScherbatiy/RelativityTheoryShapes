@@ -1,14 +1,12 @@
 package relativity.shape
 
 import javafx.scene.paint.Color
-import relativity.math.RelativityTransform
-import relativity.math.RelativityVector
-import relativity.math.Translate
-import relativity.math.ZeroRelativityVector
+import relativity.math.*
 
 class RelativityCoordinatesShape(
     val size: Double,
     val position: RelativityVector = ZeroRelativityVector,
+    val velocity: SpaceVector = ZeroSpaceVector,
     val color: Color = Color.BLACK,
     val grid: Boolean = false,
     val lightCone: Boolean = false,
@@ -80,5 +78,5 @@ class RelativityCoordinatesShape(
         }
 
     override val transforms: List<RelativityTransform>
-        get() = listOf(Translate(position))
+        get() = listOf(Translate(position), VelocityTransform(velocity))
 }

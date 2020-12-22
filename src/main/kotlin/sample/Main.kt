@@ -9,6 +9,7 @@ import javafx.scene.transform.Transform
 import javafx.stage.Stage
 import relativity.javafx.toJavaFX
 import relativity.math.RelativityVector
+import relativity.math.SpaceVector
 import relativity.shape.RelativityCoordinatesShape
 
 class Main : Application() {
@@ -16,18 +17,20 @@ class Main : Application() {
     override fun start(primaryStage: Stage) {
 
         primaryStage.title = "Hello world Application"
-        val w = 1000.0;
-        val h = 800.0;
-        val size = 200.0
+        val w = 1000.0
+        val h = 800.0
+        val size = 400.0
 
         primaryStage.width = w
         primaryStage.height = h
 
         val coordinates2 = RelativityCoordinatesShape(
             size,
-            position = RelativityVector(27.0, 80.0),
+            position = RelativityVector(100.0, 150.0),
             color = Color.BLUE,
             lightCone = true,
+            grid = true,
+            velocity = SpaceVector(x = 0.20)
         )
         val coordinates1 = RelativityCoordinatesShape(
             size,
