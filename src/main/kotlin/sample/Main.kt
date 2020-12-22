@@ -11,6 +11,8 @@ import relativity.javafx.toJavaFX
 import relativity.math.RelativityVector
 import relativity.math.SpaceVector
 import relativity.shape.RelativityCoordinatesShape
+import relativity.shape.worldLineFromLength
+import relativity.shape.worldLineFromVelocity
 
 class Main : Application() {
 
@@ -19,10 +21,16 @@ class Main : Application() {
         primaryStage.title = "Hello world Application"
         val w = 1000.0
         val h = 800.0
-        val size = 400.0
+        val size = 500.0
 
         primaryStage.width = w
         primaryStage.height = h
+
+        val v = 0.15
+        val u = 0.25
+        val length = 300.0
+
+        val tachyon1 = worldLineFromLength(length = length, velocity = SpaceVector(u), color = Color.GREEN)
 
         val coordinates2 = RelativityCoordinatesShape(
             size,
@@ -30,14 +38,14 @@ class Main : Application() {
             color = Color.BLUE,
             lightCone = true,
             grid = true,
-            velocity = SpaceVector(x = 0.20)
+            velocity = SpaceVector(x = v)
         )
         val coordinates1 = RelativityCoordinatesShape(
             size,
             color = Color.BLACK,
             grid = true,
             lightCone = true,
-            shapes = listOf(coordinates2)
+            shapes = listOf(coordinates2, tachyon1)
         )
         val group = coordinates1.toJavaFX()
 

@@ -7,5 +7,6 @@ data class Segment(
     val start: RelativityVector,
     val end: RelativityVector,
     val color: Color = Color.BLACK,
-    val dashed: Boolean = false
+    val dashed: Boolean = false,
+    val lineWidth:Double = 1.0
 )

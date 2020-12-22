@@ -17,6 +17,14 @@ class SpaceVectorTest {
     }
 
     @Test
+    fun testProduct() {
+        assertEquals(SpaceVector(), SpaceVector(2.0, 3.0, 4.0) * 0.0)
+        assertEquals(SpaceVector(2.0, 3.0, 4.0), SpaceVector(2.0, 3.0, 4.0) * 1.0)
+        assertEquals(SpaceVector(4.0, 6.0, 8.0), SpaceVector(2.0, 3.0, 4.0) * 2.0)
+        assertEquals(SpaceVector(-4.0, -6.0, -8.0), SpaceVector(2.0, 3.0, 4.0) * -2.0)
+    }
+
+    @Test
     fun testScalarProduct() {
 
         Assert.assertEquals(0.0, SpaceVector(x = 0.0) * SpaceVector(x = 3.0), delta)

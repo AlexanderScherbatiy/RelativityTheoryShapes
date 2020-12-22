@@ -32,6 +32,7 @@ fun Segment.toJavaFX(transforms: List<RelativityTransform>): Shape {
     if (dashed) {
         line.strokeDashArray.addAll(2.0, 5.0)
     }
+    line.strokeWidth = lineWidth
     return line
 }
 

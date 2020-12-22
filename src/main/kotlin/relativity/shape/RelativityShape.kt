@@ -2,9 +2,9 @@ package relativity.shape
 
 import relativity.math.RelativityTransform
 
-abstract class RelativityShape {
+interface RelativityShape {
 
-    abstract val segments: List<Segment>
-    abstract val transforms: List<RelativityTransform>
-    abstract val shapes: List<RelativityShape>
+    val segments: List<Segment>
+    val transforms: List<RelativityTransform>
+    val shapes: List<RelativityShape>
 }

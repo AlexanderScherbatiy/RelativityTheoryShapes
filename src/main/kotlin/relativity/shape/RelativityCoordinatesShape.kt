@@ -3,7 +3,7 @@ package relativity.shape
 import javafx.scene.paint.Color
 import relativity.math.*
 
-class RelativityCoordinatesShape(
+data class RelativityCoordinatesShape(
     val size: Double,
     val position: RelativityVector = ZeroRelativityVector,
     val velocity: SpaceVector = ZeroSpaceVector,
@@ -12,7 +12,7 @@ class RelativityCoordinatesShape(
     val lightCone: Boolean = false,
     override val shapes: List<RelativityShape> = listOf()
 ) :
-    RelativityShape() {
+    RelativityShape {
 
     override val segments: List<Segment>
         get() {
@@ -21,13 +21,15 @@ class RelativityCoordinatesShape(
             val t = Segment(
                 start = RelativityVector(t = -size),
                 end = RelativityVector(t = size),
-                color = color
+                color = color,
+                lineWidth = 2.0
             );
 
             val x = Segment(
                 start = RelativityVector(x = -size),
                 end = RelativityVector(x = size),
-                color = color
+                color = color,
+                lineWidth = 2.0
             );
 
             segments.add(t)
@@ -45,7 +47,9 @@ class RelativityCoordinatesShape(
                             start = RelativityVector(t = -s, x = dd),
                             end = RelativityVector(t = s, x = dd),
                             color = color,
-                            dashed = true
+                            dashed = true,
+                            lineWidth = 0.5
+
                         )
                     )
                     segments.add(
@@ -53,7 +57,8 @@ class RelativityCoordinatesShape(
                             start = RelativityVector(t = dd, x = -s),
                             end = RelativityVector(t = dd, x = s),
                             color = color,
-                            dashed = true
+                            dashed = true,
+                            lineWidth = 0.5
                         )
                     )
                 }
