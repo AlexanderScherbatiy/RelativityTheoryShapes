@@ -16,21 +16,24 @@ class Main : Application() {
     override fun start(primaryStage: Stage) {
 
         primaryStage.title = "Hello world Application"
-        val w = 800.0;
-        val h = 600.0;
+        val w = 1000.0;
+        val h = 800.0;
+        val size = 200.0
 
         primaryStage.width = w
         primaryStage.height = h
 
         val coordinates2 = RelativityCoordinatesShape(
-            100.0,
-            position = RelativityVector(40.0, 30.0),
-            color = Color.BLUE
+            size,
+            position = RelativityVector(27.0, 80.0),
+            color = Color.BLUE,
+            lightCone = true,
         )
         val coordinates1 = RelativityCoordinatesShape(
-            100.0,
+            size,
             color = Color.BLACK,
             grid = true,
+            lightCone = true,
             shapes = listOf(coordinates2)
         )
         val group = coordinates1.toJavaFX()
