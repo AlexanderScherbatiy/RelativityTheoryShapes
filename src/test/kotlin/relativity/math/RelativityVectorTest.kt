@@ -17,6 +17,22 @@ class RelativityVectorTest {
     }
 
     @Test
+    fun testMinus() {
+        assertEquals(
+            RelativityVector(7.0, 6.0, 5.0, 2.0),
+            RelativityVector(11.0, 9.0, 7.0, 3.0) - RelativityVector(4.0, 3.0, 2.0, 1.0)
+        )
+    }
+
+    @Test
+    fun testProduct() {
+        assertEquals(RelativityVector(), RelativityVector(1.0, 2.0, 3.0, 4.0) * 0.0)
+        assertEquals(RelativityVector(1.0, 2.0, 3.0, 4.0), RelativityVector(1.0, 2.0, 3.0, 4.0) * 1.0)
+        assertEquals(RelativityVector(2.0, 4.0, 6.0, 8.0), RelativityVector(1.0, 2.0, 3.0, 4.0) * 2.0)
+        assertEquals(RelativityVector(-2.0, -4.0, -6.0, -8.0), RelativityVector(1.0, 2.0, 3.0, 4.0) * -2.0)
+    }
+
+    @Test
     fun testScalarProduct() {
 
         Assert.assertEquals(0.0, RelativityVector(t = 0.0) * RelativityVector(t = 3.0), delta)
