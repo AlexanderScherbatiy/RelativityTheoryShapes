@@ -1,5 +1,22 @@
 package relativity.math
 
+fun worldLineFromVelocity(
+    position: RelativityVector = ZeroRelativityVector,
+    velocity: SpaceVector = ZeroSpaceVector,
+    time: Double = 1.0,
+): WorldLine {
+    val end = position + RelativityVector(time, time * velocity.x)
+    return WorldLine(start = position, end = end)
+}
+
+fun worldLineFromLength(
+    length: Double,
+    position: RelativityVector = ZeroRelativityVector,
+    velocity: SpaceVector = ZeroSpaceVector,
+): WorldLine {
+    val end = position + RelativityVector(length / velocity.x, length)
+    return WorldLine(start = position, end = end)
+}
 
 data class WorldLine(val start: RelativityVector, val end: RelativityVector) {
 
